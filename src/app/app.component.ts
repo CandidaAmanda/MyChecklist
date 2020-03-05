@@ -6,5 +6,43 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'MyChecklist';
+  title:string = 'MyChecklist';
+  buttonDisplay: string = "Task not added";
+  buttonEnabled:boolean=false;
+
+  constructor()
+  {
+    setTimeout(()=>{this.buttonEnabled=true},2000);
+  }
+
+  taskList=[];
+
+  priorityList=[];
+
+  taskName:string ="";
+  taskPriority:string="";
+  taskEntered:boolean=false;
+  priorityEntered:boolean=false;
+
+  onAddTask(event:any){
+
+    console.log(event);
+
+    this.buttonDisplay="Task Added";
+    this.taskEntered=true;
+    this.priorityEntered=true;
+    this.taskList.push(this.taskName);
+    this.priorityList.push(this.taskPriority);
+    console.log(this.priorityList.length);
+    // this.taskList[1]=this.taskName;
+    // this.priorityList[1]=this.taskPriority;
+
+
+    //taskList.push(this.taskName);
+    //priorityList.push(this.taskPriority);
+
+    //console.log(taskList);
+  }
+  
+
 }

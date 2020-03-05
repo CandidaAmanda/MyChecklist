@@ -1,15 +1,37 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div align="center">
   <h1>
     Welcome to {{ title }}!
   </h1>
-</div>
+
 
 <label> Task:
-<input type="text" name="taskname" value="">
+<input type="text" name="taskname" class="form-control" value="" [(ngModel)]="taskName">
 </label>
-<br>
-
+<b>
 <label> Priority:
-<input type="text" name="priority" value="">
+<input type="text" name="priority" class="form-control" value="" [(ngModel)]="taskPriority">
 </label>
+<button class="btn btn-primary" type="reset" name="addTaskButton" (click)="onAddTask($event)" [disabled]="!buttonEnabled">Add Task</button>
+
+<p>{{buttonDisplay}}</p>
+<!-- <p>{{taskName}}</p> -->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Task</th>
+      <th scope="col">Priority</th>
+    </tr>
+  </thead>
+  <tr *ngFor ="let task of taskList; let i=index">
+    <!-- <td *ngIf="taskEntered">{{taskList[1]}}
+    </td>
+    <td *ngIf="priorityEntered">{{priorityList[1]}}
+      
+    </td> -->
+    <td>{{task}}</td>
+    <td>{{priorityList[i]}}</td>
+  </tr>
+</table>
+
+
