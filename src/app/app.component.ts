@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title:string = 'MyChecklist';
-  buttonDisplay: string = "Task not added";
+  // buttonDisplay: string = "Task not added";
   buttonEnabled:boolean=false;
 
   constructor()
@@ -16,24 +16,37 @@ export class AppComponent {
   }
 
   taskList=[];
-
   priorityList=[];
 
-  taskName:string ="";
-  taskPriority:string="";
-  taskEntered:boolean=false;
-  priorityEntered:boolean=false;
-
+  
+  taskName:string='';
+  taskPriority:string='';
+  numberOfTasks:number=0;
+  // taskEntered:boolean=false;
+  // priorityEntered:boolean=false;
+  
   onAddTask(event:any){
 
     console.log(event);
 
-    this.buttonDisplay="Task Added";
-    this.taskEntered=true;
-    this.priorityEntered=true;
-    this.taskList.push(this.taskName);
-    this.priorityList.push(this.taskPriority);
-    console.log(this.priorityList.length);
+    // this.buttonDisplay="Task Added";
+    // this.taskEntered=true;
+    // this.priorityEntered=true;
+    
+    if (this.taskName !="" && this.taskPriority!="")
+    {
+      this.taskList.push(this.taskName);
+      this.priorityList.push(this.taskPriority);
+    }
+
+    else
+    {alert ("Please enter required fields");}
+
+    this.taskName ="";
+    this.taskPriority="";
+  
+    
+    this.numberOfTasks=this.priorityList.length;
     // this.taskList[1]=this.taskName;
     // this.priorityList[1]=this.taskPriority;
 
